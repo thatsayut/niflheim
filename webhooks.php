@@ -21,8 +21,12 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 
-			$text = $event['message'];
-
+			$massage = $event['message']['text'];
+		    if($massage == "สวัสดี"){
+		        $text = "สวัสดีจ้าาา";
+		    }else if($massage == "เป็นอย่างไรบ้าง"){
+		    	$text = "สบายดีจ้า";
+		    }
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
