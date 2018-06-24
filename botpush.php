@@ -16,7 +16,7 @@ $actions = array (
   New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("no", "ans=N")
 );
 $img_url = "https://cdn.shopify.com/s/files/1/0379/7669/products/sampleset2_1024x1024.JPG?v=1458740363";
-$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("confim message", "description", $img_url, ,$actions);
+$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("confim message", "description", $img_url ,$actions);
 $outputText = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("confim message", $button);
 $response = $bot->replyMessage($event->getReplyToken(), $outputText);
 
