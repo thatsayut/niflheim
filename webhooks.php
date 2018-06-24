@@ -21,7 +21,7 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 
-			$text = 'สวัสดีครับเป็นอย่างไรบ้าง';
+			$text = $event['message'];
 
 			// Build message to reply back
 			$messages = [
