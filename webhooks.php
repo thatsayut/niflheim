@@ -26,6 +26,10 @@ if (!is_null($events['events'])) {
 		        $text = "สวัสดีจ้าาา";
 		    }else if($massage == "เป็นอย่างไรบ้าง"){
 		    	$text = "สบายดีจ้า";
+		    }else if($massage == "ans=y"){
+		    	$text = "good";
+		    }else{
+		    	$text = $massage;
 		    }
 			// Build message to reply back
 			$messages = [
