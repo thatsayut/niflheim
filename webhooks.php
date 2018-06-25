@@ -10,11 +10,7 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 
-$log  = 'User: ten - '.date("F j, Y, g:i a").PHP_EOL.
-        "data: ".$content.PHP_EOL.
-        "-------------------------".PHP_EOL;
-//Save string to log, use FILE_APPEND to append.
-file_put_contents('./log_message.text', $log, FILE_APPEND);
+
 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
@@ -46,6 +42,13 @@ if (!is_null($events['events'])) {
 		        $content = curl_exec( $ch );
 		        curl_close($ch);
 		        $obj = json_decode($content);
+
+
+		        $log  = 'User: ten - '.date("F j, Y, g:i a").PHP_EOL.
+		        "data: ".$content.PHP_EOL.
+		        "-------------------------".PHP_EOL;
+				file_put_contents('./log_message.text', $log, FILE_APPEND);
+				
 		        if(strtolower($massage) == 'yes'){
 		        	$text = 'ระบบได้เปิดประตูเรียบร้อยแล้ว';
 		        }else{
