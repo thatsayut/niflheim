@@ -8,6 +8,9 @@ $channelSecret = '54520c7810111076eaf0172df6cd5a1a';
 
 $pushID = 'U00d8c4d48c5443e513c09c2f30e409f6';
 
+if(isset($_GET["line_id"])){
+	$pushID = $_GET["line_id"];
+}
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 

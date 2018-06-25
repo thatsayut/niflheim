@@ -23,20 +23,40 @@ if (!is_null($events['events'])) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
-			//$text = $event['source']['userId'];
+			$line_id = $event['source']['userId'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
 
 			$massage = $event['message']['text'];
+			$register = explode(" ",$massage);
+			$room = ''
+			if($register[0] == 'origin'){
+				$room = $register[1];
+			}else if(strtolower($massage) == 'yes' && strtolower($massage) == 'no'){
+				$data = json_encode( array( "line_id"=> $line_id , "permission" => strtolower($massage)));
+		        $url = 'http://codinghubhome.dyndns-office.com:8090/niflheim/visitors/confirm'; 
+		        $ch = curl_init();
+		        curl_setopt( $ch, CURLOPT_URL, $url );
+		        curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
+		        curl_setopt( $ch, CURLOPT_POST, true );
+		        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+		        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+		        curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
+		        $content = curl_exec( $ch );
+		        curl_close($ch);
+		        $obj = json_decode($content);
+		        if(strtolower($massage) == 'yes'){
+		        	$text = 'ระบบได้เปิดประตูเรียบร้อยแล้ว';
+		        }else{
+		        	$text = 'ไม่อนุญาติให้เข้า';
+		        }
+			}
+
+
+
 		    if($massage == "สวัสดี"){
 		        $text = "สวัสดีจ้าาา";
-		    }else if($massage == "เป็นอย่างไรบ้าง"){
-		    	$text = "สบายดีจ้า";
-		    }else if($massage == "ans=y"){
-		    	$text = "good";
-		    }else{
-		    	$text = $massage;
 		    }
 			// Build message to reply back
 			$messages = [
