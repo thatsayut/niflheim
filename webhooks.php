@@ -33,8 +33,7 @@ if (!is_null($events['events'])) {
 			$room = '';
 			if($register[0] == 'origin'){
 				$room = $register[1];
-			}else if(strtolower($massage) == 'yes' && strtolower($massage) == 'no'){
-
+			}else if(strtolower($massage) == 'yes' || strtolower($massage) == 'no'){
 				// $ch = curl_init();
 				// $array = array( "line_id"=> $line_id,
 				// 	'permission' => $massage,
