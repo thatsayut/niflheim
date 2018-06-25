@@ -23,7 +23,7 @@ $actions = array (
   //New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("Previous page", "page=1")
 );
 $img_url = "https://image.ibb.co/k52uuo/cdeadf15_7c66_442c_ab98_223a705e6152.jpg";
-$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("Facial Access control", "visitor", $img_url, $actions);
+$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder("Facial Access control", "visitor", $img_url, $actions);
 $outputText = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("Button template builder", $button);
 $response = $bot->pushMessage($pushID, $outputText);
 
