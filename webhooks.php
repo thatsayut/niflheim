@@ -9,6 +9,13 @@ $access_token = 'kUCEdk/p61dDiIHUxMPLT/04KRcBrxfevLpfhZBLofSSCqPqNPU3xB3dksvKRYY
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
+
+$log  = 'User: ten - '.date("F j, Y, g:i a").PHP_EOL.
+        "data: ".$events.PHP_EOL.
+        "-------------------------".PHP_EOL;
+//Save string to log, use FILE_APPEND to append.
+file_put_contents('./log_message.text', $log, FILE_APPEND);
+
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
