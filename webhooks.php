@@ -11,7 +11,7 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 
 $log  = 'User: ten - '.date("F j, Y, g:i a").PHP_EOL.
-        "data: ".print_r($events).PHP_EOL.
+        "data: ".$content.PHP_EOL.
         "-------------------------".PHP_EOL;
 //Save string to log, use FILE_APPEND to append.
 file_put_contents('./log_message.text', $log, FILE_APPEND);
