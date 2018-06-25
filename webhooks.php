@@ -34,21 +34,28 @@ if (!is_null($events['events'])) {
 			if($register[0] == 'origin'){
 				$room = $register[1];
 			}else if(strtolower($massage) == 'yes' && strtolower($massage) == 'no'){
-				$data = json_encode( array( "line_id"=> $line_id , "permission" => strtolower($massage)));
-		        $url = 'http://codinghubhome.dyndns-office.com:8090/niflheim/visitors/confirm'; 
-		        $ch = curl_init();
-		        curl_setopt( $ch, CURLOPT_URL, $url );
-		        curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
-		        curl_setopt( $ch, CURLOPT_POST, true );
-		        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-		        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
-		        curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
-		        $content = curl_exec( $ch );
-		        curl_close($ch);
-		        $obj = json_decode($content);
+
+				$ch = curl_init();
+				$array = array( "line_id"=> $line_id,
+					'permission' => $massage,
+					'security_code' => md5('viking'.date("Ymd"))
+					);
+				$data = json_encode($array);
+				$url = 'http://codinghubhome.dyndns-office.com:8090/niflheim/visitors/confirm'; 
+
+				curl_setopt( $ch, CURLOPT_URL, $url );
+				curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
+				curl_setopt( $ch, CURLOPT_POST, true );
+				curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+				curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
+				curl_setopt($ch, CURLOPT_FAILONERROR, true);
+				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				$server_output = curl_exec ($ch);
+				curl_close ($ch);
 
 		        $log  = 'User: ten - '.date("F j, Y, g:i a").PHP_EOL.
-				"data: ".$content.PHP_EOL.
+				"data: ".$server_output.PHP_EOL.
 				"-------------------------".PHP_EOL;
 				file_put_contents('./log_confirm.text', $log, FILE_APPEND);
 
