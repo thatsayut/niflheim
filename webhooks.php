@@ -64,6 +64,12 @@ if (!is_null($events['events'])) {
 
 			echo $result . "\r\n";
 		}
+		if ($event['type'] == 'postback' ){
+			$data = $event['postback']['data'];		
+			
+		}
+
+
 	}
 }
 echo "OK";
