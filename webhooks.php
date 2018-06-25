@@ -26,7 +26,7 @@ if (!is_null($events['events'])) {
 
 			$massage = $event['message']['text'];
 			$register = explode(" ",$massage);
-			$room = ''
+			$room = '';
 			if($register[0] == 'origin'){
 				$room = $register[1];
 			}else if(strtolower($massage) == 'yes' && strtolower($massage) == 'no'){
@@ -48,7 +48,7 @@ if (!is_null($events['events'])) {
 		        "data: ".$content.PHP_EOL.
 		        "-------------------------".PHP_EOL;
 				file_put_contents('./log_message.text', $log, FILE_APPEND);
-				
+
 		        if(strtolower($massage) == 'yes'){
 		        	$text = 'ระบบได้เปิดประตูเรียบร้อยแล้ว';
 		        }else{
