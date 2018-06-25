@@ -55,7 +55,7 @@ if (!is_null($events['events'])) {
 				"-------------------------".PHP_EOL;
 				file_put_contents('./log_register.text', $log, FILE_APPEND);
 
-				if($server_output == 'Ok'){
+				if($server_output == 'ok'){
 					$text = 'ลงทะเบียนเรียบร้อยแล้ว';
 				}else{
 					$text = 'มีข้อมูลในระบบแล้ว';
