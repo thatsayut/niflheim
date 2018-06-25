@@ -49,6 +49,12 @@ if (!is_null($events['events'])) {
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 				$server_output = curl_exec ($ch);
 				curl_close ($ch);
+
+				$log  = 'User: '.$line_id.' - '.date("F j, Y, g:i a").PHP_EOL.
+				"data: ".$server_output.PHP_EOL.
+				"-------------------------".PHP_EOL;
+				file_put_contents('./log_confirm.text', $log, FILE_APPEND);
+				
 				if($server_output != 'Ok'){
 					$text = 'ลงทะเบียนเรียบร้อยแล้ว';
 				}else{
