@@ -53,9 +53,9 @@ if (!is_null($events['events'])) {
 				$log  = 'User: '.$line_id.' - '.date("F j, Y, g:i a").PHP_EOL.
 				"data: ".$server_output.PHP_EOL.
 				"-------------------------".PHP_EOL;
-				file_put_contents('./log_confirm.text', $log, FILE_APPEND);
-				
-				if($server_output != 'Ok'){
+				file_put_contents('./log_register.text', $log, FILE_APPEND);
+
+				if($server_output == 'Ok'){
 					$text = 'ลงทะเบียนเรียบร้อยแล้ว';
 				}else{
 					$text = 'มีข้อมูลในระบบแล้ว';
