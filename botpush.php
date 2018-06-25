@@ -22,7 +22,7 @@ $actions = array (
   //New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("next page", "page=3"),
   //New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("Previous page", "page=1")
 );
-$img_url = "https://cdn.shopify.com/s/files/1/0379/7669/products/sampleset2_1024x1024.JPG?v=1458740363";
+$img_url = "http://codinghubhome.dyndns-office.com:8090/niflheim/uploads/log/20180621172315603505379.jpg";
 $button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder("Facial Access control", "visitor", $img_url, $actions);
 $outputText = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("Button template builder", $button);
 $response = $bot->pushMessage($pushID, $outputText);
