@@ -37,7 +37,7 @@ if (!is_null($events['events'])) {
 					'security_code' => md5('viking')
 					);
 				$data = json_encode($array);
-				$url = 'http://codinghubhome.dyndns-office.com:8090/niflheim/visitors/register'; 
+				$url = 'http://115.31.144.252/niflheim/visitors/register'; 
 
 				curl_setopt( $ch, CURLOPT_URL, $url );
 				curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
@@ -68,7 +68,7 @@ if (!is_null($events['events'])) {
 					'security_code' => md5('viking')
 					);
 				$data = json_encode($array);
-				$url = 'http://codinghubhome.dyndns-office.com:8090/niflheim/visitors/confirm'; 
+				$url = 'http://115.31.144.252/niflheim/visitors/confirm'; 
 
 				curl_setopt( $ch, CURLOPT_URL, $url );
 				curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );

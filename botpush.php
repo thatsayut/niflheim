@@ -11,6 +11,11 @@ $pushID = 'U00d8c4d48c5443e513c09c2f30e409f6';
 if(isset($_GET["line_id"])){
 	$pushID = $_GET["line_id"];
 }
+if(isset($_GET["img"])){
+	$img_url = $_GET["img"];
+}else{
+	$img_url = "https://image.ibb.co/k52uuo/cdeadf15_7c66_442c_ab98_223a705e6152.jpg";
+}
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
@@ -25,7 +30,7 @@ $actions = array (
   //New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("next page", "page=3"),
   //New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("Previous page", "page=1")
 );
-$img_url = "https://image.ibb.co/k52uuo/cdeadf15_7c66_442c_ab98_223a705e6152.jpg";
+
 $button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder("Facial Access control", "visitor", $img_url, $actions);
 $outputText = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("Button template builder", $button);
 $response = $bot->pushMessage($pushID, $outputText);
