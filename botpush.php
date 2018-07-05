@@ -15,7 +15,7 @@ if(isset($_GET["img"])){
 	$img_url = $_GET["img"];
 }else{
 	//$img_url = 'http://115.31.144.252/niflheim/uploads/visitors/20180704155827_1.jpg';
-	$img_url = "https://image.ibb.co/k52uuo/cdeadf15_7c66_442c_ab98_223a705e6152.jpg";
+	$img_url = "https://d974d025.ngrok.io/niflheim//uploads/member/201807041808525b3caac4de382.jpg";
 }
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
