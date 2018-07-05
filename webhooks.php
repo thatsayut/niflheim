@@ -33,7 +33,7 @@ if (!is_null($events['events'])) {
 			if($register[0] == 'origin'){
 				$ch = curl_init();
 				$array = array( "line_id"=> $line_id,
-					'room' => $register[1],
+					'id' => $register[1],
 					'security_code' => md5('viking')
 					);
 				$data = json_encode($array);
